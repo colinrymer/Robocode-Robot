@@ -53,11 +53,21 @@ public class FirstRobot extends Robot
 	
 	public void goToCorner()
 	{	
-		
+		double[] corner = findClosestCorner();
 	}
 	
-	public void findClosestCorner()
+	public double[] findClosestCorner()
 	{
+		double[] result = {0,0};
 		
+		// If the x value of the robot is more than half the battlefield width, it is closer to the right than the left.
+		if ((this.getBattleFieldWidth()/2) < this.getX())
+			result[0] = this.getBattleFieldWidth();
+		
+		// If the y value of the robot is more than half the battlefield height, it is closer to the top than the bottom.
+		if ((this.getBattleFieldHeight()/2) < this.getY())
+			result[1] = this.getBattleFieldHeight();
+		
+		return result;
 	}
 }
